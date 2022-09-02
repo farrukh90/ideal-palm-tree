@@ -1,0 +1,8 @@
+---
+- name: reboot systems
+  hosts: all 
+  become: yes
+  become_method: sudo 
+  tasks: 
+  - name: reboot systems
+    shell: reboot

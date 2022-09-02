@@ -1,0 +1,16 @@
+---
+- name: stop services
+  hosts: all 
+  become: yes
+  become_method: sudo 
+  tasks: 
+  - name: Stop services
+    systemd:
+      name: {{ item }}
+      state: stopped
+    with_items: 
+    - httpd
+    - datadog
+    - fluentbit
+    - aws-agent 
+    - mysql 

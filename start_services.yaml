@@ -1,0 +1,16 @@
+---
+- name: start services
+  hosts: all 
+  become: yes
+  become_method: sudo 
+  tasks: 
+  - name: start services
+    systemd:
+      name: {{ item }}
+      state: started
+    with_items: 
+    - httpd
+    - datadog
+    - fluentbit
+    - aws-agent 
+    - mysql 

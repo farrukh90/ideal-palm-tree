@@ -1,0 +1,9 @@
+---
+- name: get info services
+  hosts: all 
+  become: yes
+  become_method: sudo 
+  tasks: 
+  - name: get info services
+    debug:
+      services: 

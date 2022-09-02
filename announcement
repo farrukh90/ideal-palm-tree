@@ -1,0 +1,23 @@
+Upgrading Kernel Process 
+	1. Schedule a downtime with a team. Send out a notification to everyone, either email, or slack
+	2. Reserve 1-4 hours maintenance window for a night. Usually 12:00 am to 4:00 am 
+	3. At maintenance window perform the following.
+		a. Stop all running processes     
+			i. systemctl stop  monitoring
+			ii. systemctl stop   backup 
+			iii. systemctl stop  logs 
+			iv. systemctl  stop  cache
+		b. Take a backup or snapshot if possible 
+		c. uname  -r                          (Note kernel version somewhere)
+		d. yum update kernel -y     (Wait for it to complete) 
+		e. reboot                               (Wait for it to come back) 
+		f. uname  -r                          (Verify kernel version)
+		g. Start all the processes
+			i. systemctl start monitoring
+			ii. systemctl start backup 
+			iii. systemctl start logs 
+			iv. systemctl  start cache
+		
+	4. Send out a notification to everyone, either email, or slack about the completion of the task
+
+
